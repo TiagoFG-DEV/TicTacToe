@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Velha</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container" id="conteiner">
+      <h1 id="titleText">Jogo da Velha</h1>
+      <div id="displayPlacar">
+          <h2> [ </h2>
+          <h3>Pontos X:</h3>
+          <h3 id="placarX"></h3>
+          <h3>  vs  </h3>
+          <h3>Pontos O: </h3>
+          <h3 id="placarO"></h3>
+          <h2> ] </h2>
+          <div class="resetbuttondiv">
+              <button class="reset-button" onclick="zerarTheGame()">Reiniciar</button>
+          </div>
+      </div>
+      <br>
+      <div class="message"><h1 id="textID"></h1></div>
+      <div class="board">
+          <div class="cell" id="a1" onclick="casa(0, 0)"></div>
+          <div class="cell" id="a2" onclick="casa(0, 1)"></div>
+          <div class="cell" id="a3" onclick="casa(0, 2)"></div>
+          <div class="cell" id="b1" onclick="casa(1, 0)"></div>
+          <div class="cell" id="b2" onclick="casa(1, 1)"></div>
+          <div class="cell" id="b3" onclick="casa(1, 2)"></div>
+          <div class="cell" id="c1" onclick="casa(2, 0)"></div>
+          <div class="cell" id="c2" onclick="casa(2, 1)"></div>
+          <div class="cell" id="c3" onclick="casa(2, 2)"></div>
+      </div>
+  </div>
+
+  <!-- Código de leitura em Libras -->
+  <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+      </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

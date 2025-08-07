@@ -1,0 +1,273 @@
+#displayPlacar {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid rgb(45, 45, 45);
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  background-color: rgb(85, 68, 61);
+}
+
+.resetbuttondiv {
+  margin: 15px;
+}
+
+#placarX {
+  font: italic;
+  color: white;
+}
+
+#placarO {
+  font: italic;
+  color: white;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(91, 66, 101);
+  text-align: center;
+  color: white;
+}
+
+.textID {
+  font-size: 10px;
+  color: white;
+}
+
+#titleText {
+  font-size: 30px;
+  color: white;
+}
+
+.container {
+  text-align: center;
+  background-color: rgb(91, 66, 101);
+}
+
+/* Tabuleiro */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  margin-bottom: 20px;
+  gap: 2px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgb(68, 33, 92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  font-size: 75px;
+  transition: 0.2s;
+}
+
+/* Animação aplicada apenas ao símbolo dentro da célula */
+.symbol {
+  display: inline-block;
+  animation: pop 0.3s ease-in-out;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mensagens e botões */
+.message {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.reset-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: rgb(150, 16, 167);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: 0.2s;
+}
+
+.reset-button:hover {
+  color: white;
+  background-color: rgb(171, 51, 187);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Bordas individuais das células */
+#a1 {
+  border-top: 0px transparent;
+  border-left: 0px transparent;
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+}
+
+#a2 {
+  border-top: 0px transparent;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+}
+
+#a3 {
+  border-top: 0px transparent;
+  border-right: 0px transparent;
+  border-left: 4px solid;
+  border-bottom: 4px solid;
+}
+
+#b1 {
+  border-top: 4px solid;
+  border-left: 0px transparent;
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+}
+
+#b2 {
+  border-top: 4px solid;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+}
+
+#b3 {
+  border-top: 4px solid;
+  border-right: 0px transparent;
+  border-left: 4px solid;
+  border-bottom: 4px solid;
+}
+
+#c1 {
+  border-bottom: 0px transparent;
+  border-left: 0px transparent;
+  border-right: 4px solid;
+  border-top: 4px solid;
+}
+
+#c2 {
+  border-bottom: 0px transparent;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-top: 4px solid;
+}
+
+#c3 {
+  border-bottom: 0px transparent;
+  border-right: 0px transparent;
+  border-left: 4px solid;
+  border-top: 4px solid;
+}
+/* Certifique-se de que o contêiner (id="conteiner") tenha position: relative; para que as linhas posicionadas com absolute fiquem em relação a ele */
+#conteiner {
+  position: relative;
+}
+
+/* Linha horizontal (ex.: vitória na linha) */
+.line {
+  position: absolute;
+  width: 300px;
+  height: 6px;
+  background-color: white;
+  transform-origin: left center;
+  opacity: 0;
+  animation: lineDraw 0.6s ease-out forwards;
+}
+
+/* Linha vertical (ex.: vitória na coluna) */
+.line2 {
+  position: absolute;
+  width: 6px;
+  height: 280px;
+  background-color: white;
+  transform-origin: top center;
+  opacity: 0;
+  animation: lineDrawVertical 0.6s ease-out forwards;
+}
+
+/* Linha diagonal (ex.: vitória da diagonal principal) */
+/* Essa linha é posicionada e rotacionada para criar um efeito diagonal */
+.line3 {
+  position: absolute;
+  width: 300px;
+  height: 6px;
+  background-color: white;
+  transform-origin: left center;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: lineDraw 0.6s ease-out forwards;
+}
+
+/* Linha diagonal inversa (ex.: vitória da diagonal secundária) */
+.line4 {
+  position: absolute;
+  width: 6px;
+  height: 300px;
+  background-color: white;
+  transform-origin: right center;
+  transform: rotate(-45deg);
+  opacity: 0;
+  animation: lineDrawVertical 0.6s ease-out forwards;
+}
+
+@keyframes lineDraw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lineDrawVertical {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Efeito de brilho no contêiner em caso de vitória */
+.winner-board {
+  animation: boardGlow 1s infinite alternate;
+}
+
+@keyframes boardGlow {
+  from {
+    box-shadow: 0 0 10px 2px rgb(247, 0, 255);
+  }
+  to {
+    box-shadow: 0 0 90px 10px rgb(247, 0, 255);
+  }
+}
